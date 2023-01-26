@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,57 +23,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
 
         rpc = new RockPaperScissors();
-
-        binding.rockButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Button b = view.getRootView().findViewById(R.id.rockButton);
-
-                rpc.evaluateMatch((String) b.getText());
-                updateTextViews(view);
-            }
-        });
-
-        binding.paperButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Button b = view.getRootView().findViewById(R.id.paperButton);
-
-                rpc.evaluateMatch((String) b.getText());
-                updateTextViews(view);
-            }
-        });
-
-        binding.scissorsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Button b = view.getRootView().findViewById(R.id.scissorsButton);
-
-                rpc.evaluateMatch((String) b.getText());
-                updateTextViews(view);
-            }
-        });
-
-        binding.resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rpc.reset();
-                updateTextViews(view);
-            }
-        });
     }
 
     private void updateTextViews(View view) {
-        TextView scoreTV = view.getRootView().findViewById(R.id.scoreTV);
-        TextView pWeaponTV = view.getRootView().findViewById(R.id.pWeaponTV);
-        TextView cWeaponTV = view.getRootView().findViewById(R.id.cWeaponTV);
-        TextView resultsTV = view.getRootView().findViewById(R.id.resultsTV);
+        binding.scoreTV.setText(rpc.getScoresAsString());
+        binding.pWeaponTV.setText(rpc.getPWeaponAsString());
+        binding.cWeaponTV.setText(rpc.getCWeaponAsString());
+        binding.resultsTV.setText(rpc.getResultsAsString());
+    }
 
-        scoreTV.setText(rpc.getScoresAsString());
-        pWeaponTV.setText(rpc.getPWeaponAsString());
-        cWeaponTV.setText(rpc.getCWeaponAsString());
-        resultsTV.setText(rpc.getResultsAsString());
+    public void onClick(View view) {
+        String tag = view.getTag().toString();
 
+        if (tag.equals("resetButton")) {
+            rpc.reset();
+            updateTextViews(view);
+        }
+        else {
+            rpc.evaluateMatch(tag);
+            updateTextViews(view);
+        }
     }
     
 }

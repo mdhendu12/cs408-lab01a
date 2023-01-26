@@ -32,7 +32,7 @@ public class RockPaperScissors {
     public void evaluateMatch (String pChoice) {
         String message = null;
         String comChoice = String.valueOf(Weapon.values()
-                [(int) Math.floor(Math.random() *(3))]).toUpperCase();
+                [(int) Math.floor(Math.random() *(Weapon.values().length))]).toUpperCase();
         this.pWeapon = "Player's Weapon: " + Weapon.valueOf(pChoice);
         this.cWeapon = "Computer's Weapon: " + Weapon.valueOf(comChoice);
 
