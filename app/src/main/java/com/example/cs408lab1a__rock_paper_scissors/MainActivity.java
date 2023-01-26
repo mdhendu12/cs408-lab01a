@@ -26,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateTextViews(View view) {
-        binding.scoreTV.setText(rpc.getScoresAsString());
-        binding.pWeaponTV.setText(rpc.getPWeaponAsString());
-        binding.cWeaponTV.setText(rpc.getCWeaponAsString());
-        binding.resultsTV.setText(rpc.getResultsAsString());
+        binding.scoreTV.setText(rpc.getScores());
+        binding.pWeaponTV.setText(rpc.getPWeapon());
+        binding.cWeaponTV.setText(rpc.getCWeapon());
+        binding.resultsTV.setText(rpc.getResults());
     }
 
     public void onClick(View view) {

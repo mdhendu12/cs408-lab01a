@@ -11,20 +11,20 @@ public class RockPaperScissors {
         this.scores = "Player: " + this.pScore + ", Computer: " + this.cScore;
     }
 
-    public String getScoresAsString () {
+    public String getScores () {
         return this.scores;
     }
 
 
-    public String getCWeaponAsString () {
+    public String getCWeapon () {
         return this.cWeapon;
     }
 
-    public String getPWeaponAsString () {
+    public String getPWeapon () {
         return this.pWeapon;
     }
 
-    public String getResultsAsString () {
+    public String getResults () {
         return this.results;
     }
 
